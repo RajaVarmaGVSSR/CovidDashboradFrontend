@@ -1,0 +1,16 @@
+.my-card
+{
+    position:absolute;
+    left:40%;
+    top:-20px;
+    border-radius:50%;
+}
+
+main {
+  width: 80%;
+  margin: 1rem auto;
+}
+
+table {
+  width: 100%;
+}

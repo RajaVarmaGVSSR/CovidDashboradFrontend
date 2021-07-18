@@ -1,0 +1,66 @@
+<body>
+  <div id="login">
+
+      <div class="container">
+          <div id="login-row" class="row justify-content-center align-items-center">
+              <div id="login-column" class="col-md-6">
+                  <div id="login-box" class="col-md-12">
+                      <form id="login-form" class="form" #signupform="ngForm" (submit)="signup(signupform)">
+                          <h3 class="text-center text-info">Sign Up</h3>
+                          <div class="form-group">
+                            <label for="name" class="text-info">Name:</label><br>
+                            <input type="text" name="name" id="name" class="form-control" ngModel #name required>
+                        </div>
+                          <div class="form-group">
+                              <label for="username" class="text-info">E-mail:</label><br>
+                              <input type="email" name="username" id="username" class="form-control" ngModel #username required email>
+                          </div>
+
+                          <div class="form-group">
+                            <label for="age" class="text-info">Age:</label><br>
+                            <input type="number" name="age" id="age" class="form-control" ngModel #age required min=16>
+                          </div>
+
+                          <div class="form-group">
+                            <label for="gender" class="text-info">Gender:</label><br>
+                            <select class="form-control" id="gender" name="gender" ngModel #gender required>
+                                <option value="Male">Male</option>
+                                <option value="Female">Female</option>
+                                <option value="Other">Other</option>
+                            </select>
+                          </div>
+
+
+                          <div class="form-group">
+                            <label for="state" class="text-info">State : </label>
+                            <select #state_id ngModel name="state_id" (ngModelChange)=onChange(state_id) class="form-control">
+                              <option *ngFor="let state of states" [value]="state.id">{{state.name}}</option>
+                            </select>
+                          </div>
+
+                          <div class="form-group" *ngIf="state_id.value">
+                            <label for="district" class="text-info">District : </label>
+                            <select #district_id ngModel name="district_id" class="form-control">
+                              <option *ngFor="let district of districts" [value]="district.id">{{district.name}}</option>
+                            </select>
+                          </div>
+
+
+                          <div class="form-group">
+                              <label for="password" class="text-info">Password:</label><br>
+                              <input type="password" name="password" id="password" class="form-control" ngModel #password required>
+                          </div>
+
+                          <div class="form-group">
+                              <button mat-raised-button color="primary" type="submit" name="submit"  value="submit" [disabled]="!signupform.valid">Register</button>  |
+                              <span class="text-right">
+                              <a  routerLink="/login" class="text-info"><button mat-raised-button color="primary">Login here</button></a>
+                              </span>
+                          </div>
+                      </form>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+</body>

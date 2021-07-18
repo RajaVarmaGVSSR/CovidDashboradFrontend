@@ -1,0 +1,12 @@
+<mat-toolbar color="primary">
+  <mat-toolbar-row>
+    <!--  <span>HOME</span> -->
+     <span><a routerLink="/">HOME</a></span>
+     <span class="spacer"></span>
+     <a *ngIf="!isLogged" mat-button routerLink="/signup">Register</a>
+     <a *ngIf="!isLogged" mat-button routerLink="/login">Login</a>
+     <a *ngIf="isLogged" mat-button routerLink="/profile">My Profile</a>
+     <a *ngIf="isLogged && user.authority==='ADMIN'" mat-button routerLink="/adminData">Add Details</a>
+     <button mat-button *ngIf="isLogged" (click)='logout()' >Logout</button>
+  </mat-toolbar-row>
+</mat-toolbar>

@@ -1,0 +1,102 @@
+<main class="team-section text-center my-5">
+<mat-tab-group>
+
+  <mat-tab label="All">
+    <mat-accordion class="example-headers-align">
+      <div *ngFor="let test of tests">
+      <mat-expansion-panel disabled>
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+              {{test.patient.pname}} - {{test.patient.page}} - {{test.patient.pgender}}
+          </mat-panel-title>
+          <mat-panel-description>
+            Status : {{test.result}}
+            <mat-icon>account_circle</mat-icon>
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+      </mat-expansion-panel>
+    </div>
+    </mat-accordion>
+    </mat-tab>
+
+
+
+
+  <mat-tab label="Pending">
+<mat-accordion class="example-headers-align">
+  <div *ngFor="let test of tests">
+  <mat-expansion-panel *ngIf="test.result=='Pending'">
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+          {{test.patient.pname}} - {{test.patient.page}} - {{test.patient.pgender}}
+      </mat-panel-title>
+      <mat-panel-description>
+        Status : {{test.result}}
+        <mat-icon>pending_actions</mat-icon>
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+
+    <mat-form-field>
+      <mat-label>Update Report</mat-label>
+      <mat-select name="reportStatus" #reportStatus ngModel>
+        <mat-option value="Positive">Positive</mat-option>
+        <mat-option value="Negative">Negative</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-action-row>
+      <button mat-button color="primary" (click)=updateTest(test.id,reportStatus,test.patient.email) >Update</button>
+    </mat-action-row>
+  </mat-expansion-panel>
+</div>
+</mat-accordion>
+</mat-tab>
+
+
+
+<mat-tab label="Positive">
+  <mat-accordion class="example-headers-align">
+    <div *ngFor="let test of tests">
+    <mat-expansion-panel *ngIf="test.result=='Positive'">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+            {{test.patient.pname}} - {{test.patient.page}} - {{test.patient.pgender}}
+        </mat-panel-title>
+        <mat-panel-description>
+          Status : {{test.result}}
+          <mat-icon>thumb_up</mat-icon>
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      <mat-action-row>
+        <button mat-button color="primary" (click)=sendReport(test.id,test.patient.email) >Send Report</button>
+      </mat-action-row>
+    </mat-expansion-panel>
+  </div>
+  </mat-accordion>
+  </mat-tab>
+
+
+  <mat-tab label="Negative">
+    <mat-accordion class="example-headers-align">
+      <div *ngFor="let test of tests">
+      <mat-expansion-panel *ngIf="test.result=='Negative'">
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+              {{test.patient.pname}} - {{test.patient.page}} - {{test.patient.pgender}}
+          </mat-panel-title>
+          <mat-panel-description>
+            Status : {{test.result}}
+            <mat-icon>thumb_down</mat-icon>
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+        <mat-action-row>
+          <button mat-button color="primary" (click)=sendReport(test.id,test.patient.email) >Send Report</button>
+        </mat-action-row>
+      </mat-expansion-panel>
+    </div>
+    </mat-accordion>
+    </mat-tab>
+
+
+</mat-tab-group>
+</main>

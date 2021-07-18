@@ -1,0 +1,35 @@
+<app-admin-navbar></app-admin-navbar>
+
+<div class="container p-5 my-3 border">
+
+  <div class="alert alert-success" role="alert">
+    A simple success alert—check it out!
+  </div>
+  <div class="alert alert-danger" role="alert">
+    A simple danger alert—check it out!
+  </div>
+
+
+<form #stateform="ngForm" (ngSubmit)="addState(stateform)">
+
+  <mat-form-field class="d-flex justify-content-center">
+    <mat-label>State Name</mat-label>
+    <input matInput name="stateName" #stateName ngModel>
+  </mat-form-field><br><br><br>
+
+
+  <mat-form-field class="d-flex justify-content-center">
+    <mat-label>State Code</mat-label>
+    <input matInput name="stateCode" #stateCode ngModel>
+  </mat-form-field><br><br><br>
+
+
+  <div class="row">
+    <div class="col text-center">
+      <button class="mx-auto" ngSubmit  mat-raised-button color="accent" type="submit">Add</button>
+    </div>
+  </div>
+  </form>
+
+
+</div>

@@ -1,0 +1,40 @@
+<app-admin-navbar></app-admin-navbar>
+<div class="container p-5 my-3 border">
+<form #districtform="ngForm" (submit)="addDistrict(districtform)">
+
+  <mat-form-field class="d-flex justify-content-center">
+    <mat-label>District Name</mat-label>
+    <input matInput name="districtName" #districtName ngModel>
+  </mat-form-field><br><br><br>
+
+  <mat-form-field class="d-flex justify-content-center">
+    <mat-label>Select State</mat-label>
+    <mat-select #state_id ngModel name="state_id" (ngModelChange)=onChange(state_id)>
+      <mat-option *ngFor="let state of states" [value]="state.id">{{state.name}}</mat-option>
+    </mat-select>
+  </mat-form-field><br><br><br>
+
+  <mat-form-field *ngIf="state_id.value" class="d-flex justify-content-center">
+    <mat-label>Select District</mat-label>
+    <mat-select #district_id ngModel name="district_id">
+      <mat-option *ngFor="let district of districts" [value]="district.id">{{district.name}}</mat-option>
+    </mat-select>
+  </mat-form-field><br><br><br>
+
+
+
+
+
+
+
+
+
+  <div class="row">
+    <div class="col text-center">
+      <button class="mx-auto"  mat-raised-button color="accent" type="submit">Add</button>
+    </div>
+  </div>
+
+  </form>
+
+  </div>

@@ -1,0 +1,53 @@
+<div class="container p-5 my-3 border">
+<form #patientForm="ngForm" (submit)="addPatient(patientForm)">
+
+  <mat-form-field class="d-flex justify-content-center">
+    <mat-label>Patient Name</mat-label>
+    <input matInput name="patientName" #patientName ngModel>
+  </mat-form-field><br><br><br>
+
+
+  <mat-form-field class="d-flex justify-content-center">
+    <mat-label>Patient Age</mat-label>
+    <input matInput type="number" name="patientAge" #patientAge ngModel>
+  </mat-form-field><br><br><br>
+
+
+  <mat-form-field class="d-flex justify-content-center">
+    <mat-label>Select Gender</mat-label>
+    <mat-select #patientGender ngModel name="patientGender">
+      <mat-option value="Male">Male</mat-option>
+      <mat-option value="Female">Female</mat-option>
+      <mat-option value="Other">Other</mat-option>
+    </mat-select>
+  </mat-form-field><br><br><br>
+
+  <mat-form-field class="d-flex justify-content-center">
+    <mat-label>Email</mat-label>
+    <input matInput  name="patientEmail" #patientEmail ngModel>
+  </mat-form-field><br><br><br>
+
+
+  <mat-form-field class="d-flex justify-content-center">
+    <mat-label>Select State</mat-label>
+    <mat-select #state_id ngModel name="state_id" (ngModelChange)=onChange(state_id)>
+      <mat-option *ngFor="let state of states" [value]="state.id">{{state.name}}</mat-option>
+    </mat-select>
+  </mat-form-field><br><br><br>
+
+  <mat-form-field *ngIf="state_id.value" class="d-flex justify-content-center">
+    <mat-label>Select District</mat-label>
+    <mat-select #district_id ngModel name="district_id">
+      <mat-option *ngFor="let district of districts" [value]="district.id">{{district.name}}</mat-option>
+    </mat-select>
+  </mat-form-field><br><br><br>
+
+  <div class="row">
+    <div class="col text-center">
+      <button class="mx-auto"  mat-raised-button color="accent" type="submit">Add</button>
+    </div>
+  </div>
+
+  </form>
+
+  </div>
